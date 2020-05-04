@@ -1,0 +1,5 @@
+<div [ngClass]="editMode ? 'teal' : 'purple'" [ngStyle]="styleList">
+    This is teal if editing mode is true, purple otherwise
+</div>
+    <div *ngFor="let n of numbers"><span *ngIf="n % 2 == 0">{{n}}</span></div>
+
