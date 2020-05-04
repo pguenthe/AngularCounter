@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-indiv-color',
@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class IndivColorComponent implements OnInit {
   @Input() count:number;
   @Input() title:string;
+  @Output() changed = new EventEmitter<number>();
 
   constructor() { }
 
@@ -15,11 +16,17 @@ export class IndivColorComponent implements OnInit {
   }
 
   increment = function() {
-    this.count++;
+    if (this.count < 255) {
+      this.count++;
+    }
+    this.changed.emit(this.count);
   }
 
   decrement = function() {
-    this.count --;
+    if (this.count > 0) {
+      this.count --;
+    }
+    this.changed.emit(this.count);
   }
 
   increase5 = function() {
@@ -28,6 +35,7 @@ export class IndivColorComponent implements OnInit {
     } else {
       this.count = 255;
     } 
+    this.changed.emit(this.count);
   }
 
   decrease5 = function() { 
@@ -36,6 +44,7 @@ export class IndivColorComponent implements OnInit {
     } else {
       this.count = 0;
     } 
+    this.changed.emit(this.count);
   };
 
 

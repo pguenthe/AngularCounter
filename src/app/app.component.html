@@ -1,4 +1,8 @@
-<h1>My App</h1>
-<app-indiv-color [title]="'Red'" [count]="127"></app-indiv-color>
-<app-indiv-color [title]="'Green'" [count]="255"></app-indiv-color>
-<app-indiv-color [title]="'Blue'" [count]="0"></app-indiv-color>
+<div [ngStyle]="stylesList">
+    <h1>My App</h1>
+
+<app-indiv-color [title]="red" [count]="color.red" (changed)="changeRed($event)"></app-indiv-color>
+<app-indiv-color [title]="'Green'" [count]="color.green" (changed)="changeGreen($event)"></app-indiv-color>
+<app-indiv-color [title]="'Blue'" [count]="color.blue" (changed)="changeBlue($event)"></app-indiv-color>
+{{color.red}}, {{color.green}}, {{color.blue}}
+</div>
